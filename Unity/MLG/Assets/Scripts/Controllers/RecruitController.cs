@@ -35,4 +35,9 @@ public class RecruitController : MonoBehaviour
             ++GameController.GamerScore;
         }
     }
+
+    private void OnMouseEnter()
+    {
+        
+    }
 }
