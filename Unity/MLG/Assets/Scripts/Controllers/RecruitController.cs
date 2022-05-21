@@ -10,6 +10,9 @@ public class RecruitController : MonoBehaviour
     [SerializeField]
     public float Delay;
 
+    [SerializeField]
+    public GameController gameController;// { get; set; }
+
     private int score = 0;
     private float timeSince = 0;
 
@@ -20,7 +23,6 @@ public class RecruitController : MonoBehaviour
 
     void Update()
     {
-        //++timeSince;
         timeSince += Time.deltaTime;
 
         if (timeSince >= Delay)
@@ -29,6 +31,7 @@ public class RecruitController : MonoBehaviour
             timeSince = 0;
 
             text1.text = score.ToString();
+            ++gameController.GamerScore;
         }
     }
 }
