@@ -5,13 +5,14 @@ using TMPro;
 
 public class RecruitController : MonoBehaviour
 {
+    [Header("Game Settings")]
     [SerializeField]
     public TMP_Text text1;
     [SerializeField]
     public float Delay;
 
-    [SerializeField]
-    public GameController gameController;// { get; set; }
+    //[SerializeField]
+    public GameController GameController { get; set; }
 
     private int score = 0;
     private float timeSince = 0;
@@ -31,7 +32,7 @@ public class RecruitController : MonoBehaviour
             timeSince = 0;
 
             text1.text = score.ToString();
-            ++gameController.GamerScore;
+            ++GameController.GamerScore;
         }
     }
 }
