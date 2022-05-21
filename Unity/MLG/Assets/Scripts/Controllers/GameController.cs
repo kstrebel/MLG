@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    public UIController uiController;
+
+    public int GamerScore {
+        get { return gamerScore; }
+        set { gamerScore = value;
+            uiController.GamerScore = gamerScore;
+        } }
+    private int gamerScore;
+
+    
+    public float Cash { get; set; }
+
+    public int score { get; set; }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
