@@ -14,11 +14,15 @@ public class RecruitController : MonoBehaviour
     //[SerializeField]
     public GameController GameController { get; set; }
 
+    private new Renderer renderer;
     private int score = 0;
     private float timeSince = 0;
 
     void Start()
     {
+        renderer = gameObject.GetComponentInParent<Renderer>();
+        renderer.material.SetFloat("_Enable", 0f);
+
         text1.text = score.ToString();
     }
 
@@ -38,6 +42,11 @@ public class RecruitController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        
+        renderer.material.SetFloat("_Enable", 1f);
+    }
+
+    private void OnMouseExit()
+    {
+        renderer.material.SetFloat("_Enable", 0f);
     }
 }
