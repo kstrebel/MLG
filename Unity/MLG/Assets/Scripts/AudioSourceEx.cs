@@ -47,6 +47,12 @@ public class AudioSourceEx : MonoBehaviour
 
 	public void Play ()
 	{
+        if (clips.Length < 1)
+        {
+			Debug.LogWarning("AudioSourceEX cannot play a clip because its list is empty.");
+			return;
+        }
+
 		if (Source.isPlaying) //makes sure that audio cues cannot infinitely layer
 		{
 			Source.Stop ();
