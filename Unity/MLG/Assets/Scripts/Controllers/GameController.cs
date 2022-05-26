@@ -34,8 +34,6 @@ public class GameController : MonoBehaviour
 
     public void AddRecruit()
     {
-        //Random rand;
-
         Vector3 pos = new Vector3(Random.Range(screenWidth / (-2), screenWidth / 2), Random.Range(screenHeight / (-2), screenHeight / 2), 0);
 
         GameObject rec = GameObject.Instantiate<GameObject>(RecruitPrefab);

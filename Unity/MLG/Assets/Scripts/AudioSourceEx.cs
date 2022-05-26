@@ -29,12 +29,13 @@ public class AudioSourceEx : MonoBehaviour
 	private int PreviousSound = -1;
 	private int SequenceCount = 0;
 	public AudioClip[] clips;
-	public AudioSource Source;
+
+	private AudioSource Source;
 
 	// Use this for initialization
 	void Start () 
 	{
-		Source = GetComponent<AudioSource> ();
+		Source = GetComponentInParent<AudioSource> ();
 
 		//Reminds the user to set an audio source if there is none
 		if (Source == null) 
@@ -42,12 +43,6 @@ public class AudioSourceEx : MonoBehaviour
 			Debug.LogError ("No Audio Source Has Been Detected");
 		}
 
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
 	}
 
 	public void Play ()
