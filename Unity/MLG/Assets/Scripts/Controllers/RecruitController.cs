@@ -5,21 +5,32 @@ using TMPro;
 
 public class RecruitController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSourceEx audioEX;
+
     [Header("Game Settings")]
     [SerializeField]
-    public TMP_Text text1;
+    private TMP_Text text1;
     [SerializeField]
     public float Delay;
+
+    [Header("Audio Settings")]
+    [SerializeField]
+    private float minimumTimeBetweenPassiveSFX;
+    private float maximumTimeBetweenPassiveSFX;
 
     //[SerializeField]
     public GameController GameController { get; set; }
 
     private int score = 0;
     private float timeSince = 0;
+    private float sfxPassiveDelay;
 
     void Start()
     {
         text1.text = score.ToString();
+
+        sfxPassiveDelay = Random.Range(minimumTimeBetweenPassiveSFX, maximumTimeBetweenPassiveSFX);
     }
 
     void Update()
@@ -33,6 +44,15 @@ public class RecruitController : MonoBehaviour
 
             text1.text = score.ToString();
             ++GameController.GamerScore;
+
+            sfxPassiveDelay -= timeSince;
+        }
+
+        if (sfxPassiveDelay < timeSince)
+        {
+            audioEX.Play();
+
+            sfxPassiveDelay = Random.Range(minimumTimeBetweenPassiveSFX, maximumTimeBetweenPassiveSFX) + timeSince;
         }
     }
 }
